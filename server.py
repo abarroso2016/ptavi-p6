@@ -16,6 +16,7 @@ except IndexError:
     print("Usage: python3 server.py IP port audio_file")
     sys.exit()
 
+
 class EchoHandler(socketserver.DatagramRequestHandler):
     """
     Echo server class
