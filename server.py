@@ -35,6 +35,8 @@ class EchoHandler(socketserver.DatagramRequestHandler):
             aEjecutar = 'mp32rtp -i 127.0.0.1 -p 23032 < ' + SONG
             print("Vamos a ejecutar", aEjecutar)
             os.system(aEjecutar)
+        if METHOD == "BYE":
+            self.wfile.write(b"SIP/2.0 200 OK\r\n\r\n")
         else:
             self.wfile.write(b"SIP/2.0 405 Method Not Allowed\r\n\r\n")
 
