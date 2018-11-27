@@ -5,7 +5,15 @@ Clase (y programa principal) para un servidor de eco en UDP simple
 """
 
 import socketserver
+import sys
 
+try:
+    SERVER = sys.argv[1]
+    METHOD = int(sys.argv[2])
+    SONG = sys.argv[3]
+except IndexError:
+    print("Usage: python3 server.py IP port audio_file")
+    sys.exit()
 
 class EchoHandler(socketserver.DatagramRequestHandler):
     """
@@ -22,6 +30,10 @@ class EchoHandler(socketserver.DatagramRequestHandler):
             self.wfile.write(b"SIP/2.0 100 Trying\r\n\r\n")
             self.wfile.write(b"SIP/2.0 180 Ringing\r\n\r\n")
             self.wfile.write(b"SIP/2.0 200 OK\r\n\r\n")
+        if METHOD == "ACK":
+            print("recibido ack")
+        else:
+            self.wfile.write(b"SIP/2.0 400 Bad Request\r\n\r\n")
         
         #self.wfile.write(b"Hemos recibido tu peticion")
         #while 1:
