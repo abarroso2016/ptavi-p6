@@ -7,9 +7,6 @@ Programa cliente que abre un socket a un servidor
 import socket
 import sys
 
-# Cliente UDP simple.
-
-# Dirección IP del servidor.
 try:
     SERVER = 'localhost'
     METHOD = sys.argv[1]
