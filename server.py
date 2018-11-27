@@ -32,7 +32,7 @@ class EchoHandler(socketserver.DatagramRequestHandler):
             self.wfile.write(b"SIP/2.0 180 Ringing\r\n\r\n")
             self.wfile.write(b"SIP/2.0 200 OK\r\n\r\n")
         if METHOD == "ACK":
-            aEjecutar = 'mp32rtp -i SERVER -p PORT < ' + SONG
+            aEjecutar = 'mp32rtp -i 127.0.0.1 -p 23032 < ' + SONG
             print("Vamos a ejecutar", aEjecutar)
             os.system(aEjecutar)
         else:
