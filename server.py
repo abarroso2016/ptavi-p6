@@ -9,7 +9,7 @@ import sys
 
 try:
     SERVER = sys.argv[1]
-    METHOD = int(sys.argv[2])
+    PORT = int(sys.argv[2])
     SONG = sys.argv[3]
 except IndexError:
     print("Usage: python3 server.py IP port audio_file")
@@ -47,7 +47,7 @@ class EchoHandler(socketserver.DatagramRequestHandler):
 
 if __name__ == "__main__":
     # Creamos servidor de eco y escuchamos
-    serv = socketserver.UDPServer(('', 6001), EchoHandler)
+    serv = socketserver.UDPServer(('', PORT), EchoHandler)
     print("Listening...")
     try:
         serv.serve_forever()
